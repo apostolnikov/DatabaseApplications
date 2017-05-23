@@ -1,0 +1,36 @@
+za da trugne vtoriq proekt:
+	davam referenciq kum putviq
+	copiram App.config file
+	s nuget dobavqm referenciq kum EntityFramework
+
+
+
+za export JSON (2 ra zadacha)
+
+using System.Web.Script.Serialization;
+dobavqme referenciq	System.Web.Extensions;  // koqto se namira v Assemblies
+var json = new JavaScriptSerializer().Serialize(leagues);
+
+za da go zapishem vuv vunshen file
+using System.IO;
+File.WriteAllText("../../leagues-and-teams.json", json);
+
+za export XML (3ta zadacha)
+
+ XElement matches = new XElement("matches");   //suzdavam glaven element
+
+            foreach (var match in internationalMatches)  s foreach puham pod elementi 
+            {
+                XElement xmlMatch = new XElement("match",
+                        new XElement("home-country", new XAttribute("code", match.HomeCodeCountry), match.HomeCountryName),
+                        new XElement("away-country", new XAttribute("code", match.AwayCodeCountry), match.AwayCountryName)
+                    );
+
+nai-nakraq za export    matches.Save("../../international-matches.xml");
+
+vinagi davame toList(); na query zaqvkata za da se materializira
+
+
+
+// zadacha 3 sortiraneto e po name, i po duration ascending
+
